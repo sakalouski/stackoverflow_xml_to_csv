@@ -14,7 +14,7 @@ df = spark.read.format('com.databricks.spark.xml')
   .repartition(400)
 </code>
 
-### If this does not work, try parsing .XML with the current tool, then save as .parquet:
+### If this does not work (I had issues with saving to parquet for bigger files), try parsing .XML with the current tool, then save as .parquet:
 
 <code>
   df = sqlContext.read.csv('../stackexchange/Posts.csv').cache()
