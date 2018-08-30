@@ -3,7 +3,7 @@ An efficient tool for converting raw stackoverflow data dump into .csv format. T
 
 The data is available here: https://archive.org/details/stackexchange
 
-## If You are going to process it further with apache spark, do not convert it into .CSV 
+### If You are going to process it further with apache spark, do not convert it into .CSV 
 Read the data right from the .XML files using https://github.com/databricks/spark-xml. 
 
 Then simply:
