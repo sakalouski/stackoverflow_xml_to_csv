@@ -13,3 +13,10 @@ df = spark.read.format('com.databricks.spark.xml')
   .load('../stackexchange/xml/PostHistory.xml', schema = schema_postHist)
   .repartition(400)
 </code>
+
+If this does not work, try parsing .XML with the current tool, then save as .parquet:
+
+<code>
+  df = sqlContext.read.csv('../stackexchange/Posts.csv').cache()
+  df.write.parquet("../stackexchange/Posts.parquet")
+</code>
