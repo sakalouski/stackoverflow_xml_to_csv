@@ -4,8 +4,9 @@ An efficient tool for converting raw stackoverflow data dump into .csv format. T
 The data is available here: https://archive.org/details/stackexchange
 
 ## If You are going to process it further with apache spark, do not convert it into .CSV 
-Read right from .XML using https://github.com/databricks/spark-xml, then simply:
+Read the data right from the .XML files using https://github.com/databricks/spark-xml. 
 
+Then simply:
 <code>
 df = spark.read.format('com.databricks.spark.xml')
   .options(rowTag='row')
