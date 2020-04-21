@@ -1,22 +1,4 @@
-# stackoverflow_xml_to_csv
-An efficient tool for converting raw stackoverflow data dump into .csv format. The tool works XML of June 2018 data dump. The processing speed is around 50k rows/second. 
+# stackoverflow_xml_to_parquet
+An efficient tool for converting raw stackoverflow data dump into .csv format. The processing speed is around 50k rows/second for python csv conversion and around an order faster for scala spark solution. 
 
 The data is available here: https://archive.org/details/stackexchange
-
-### If You are going to process it further with apache spark, do not convert it into .CSV 
-Read the data right from the .XML files using https://github.com/databricks/spark-xml. 
-
-Then simply:
-<code>
-df = spark.read.format('com.databricks.spark.xml')
-  .options(rowTag='row')
-  .load('../stackexchange/xml/PostHistory.xml', schema = schema_postHist)
-  .repartition(400)
-</code>
-
-### If this does not work (I had issues with saving to parquet for bigger files), try parsing .XML with the current tool, then save as .parquet:
-
-<code>
-  df = sqlContext.read.csv('../stackexchange/Posts.csv').cache()
-  df.write.parquet("../stackexchange/Posts.parquet")
-</code>
